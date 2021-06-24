@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Metrixlab"> <!-- parallel="tests" thread-count="5" -->
+
+    <test verbose="1" name="Carrier Integration API Test" preserve-order="true"> <!-- preserve-order="false" -->
+        <parameter name="browserName" value="chrome" />
+        <parameter name="browserVersion" value="" />
+        <parameter name="platform" value="windows" />
+        <classes>
+            <class name="com.ml.api.metrixapi.swaggerdev">
+                <methods>
+                    <!--					<include name="postGetUserHO4PolicyInfo" />-->
+                    <!--					<include name="postHO4PolicyCancellations" />-->
+                    <!--					<include name="postHO4CarrierRates" />-->
+                    <!--					<include name="postHO4PolicyTransfer" />-->
+                    <!--					<include name="postHO4PolicyReinstatment" />-->
+                    <include name="happycase"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
