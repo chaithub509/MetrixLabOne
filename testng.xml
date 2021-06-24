@@ -10,12 +10,8 @@
         <classes>
             <class name="com.ml.api.metrixapi.swaggerdev">
                 <methods>
-                    <!--					<include name="postGetUserHO4PolicyInfo" />-->
-                    <!--					<include name="postHO4PolicyCancellations" />-->
-                    <!--					<include name="postHO4CarrierRates" />-->
-                    <!--					<include name="postHO4PolicyTransfer" />-->
-                    <!--					<include name="postHO4PolicyReinstatment" />-->
-                    <include name="happycase"/>
+                     <include name="happyCase"/>
+                    <include name="edgeCase"/>
                 </methods>
             </class>
         </classes>

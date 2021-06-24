@@ -21,7 +21,7 @@ public class swaggerdev {
         RequestSpecification responseSpec = reqbuilder.build();
         return responseSpec;
     }
-        @Test
+        @Test(priority = 0)
         public void happyCase(){
                 ValidatableResponse validatableResponse = given()
                         .spec(getresponseSpec())
@@ -36,7 +36,7 @@ public class swaggerdev {
                }
 
 
-    @Test
+    @Test(priority = 1)
     public void edgeCase(){
         ValidatableResponse validatableResponse = given()
                 .spec(getresponseSpec())
