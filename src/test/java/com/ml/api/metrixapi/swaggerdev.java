@@ -22,7 +22,7 @@ public class swaggerdev {
         return responseSpec;
     }
         @Test
-        public void happycase(){
+        public void happyCase(){
                 ValidatableResponse validatableResponse = given()
                         .spec(getresponseSpec())
                          .queryParam("page","2")
@@ -31,8 +31,22 @@ public class swaggerdev {
                         .get()
                         .then()
                         .log().all()
-                        .assertThat().statusCode(200)
-                        .body("name",equalTo("Luke Skywalker"));
-               }
-        }
+                        .assertThat().statusCode(200);
 
+               }
+
+
+    @Test
+    public void edgeCase(){
+        ValidatableResponse validatableResponse = given()
+                .spec(getresponseSpec())
+                .queryParam("page","2")
+                .contentType(ContentType.JSON)
+                .when()
+                .get()
+                .then()
+                .log().all()
+                .assertThat().statusCode(200)
+                .body("name",equalTo("Luke Skywalker"));
+    }
+}
