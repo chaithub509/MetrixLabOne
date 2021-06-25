@@ -8,16 +8,22 @@ import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.json.JSONObject;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+
+
 import static io.restassured.RestAssured.given;
 
 
 public class SwaggerDev {
+    public static Logger logger = LogManager.getLogger(SwaggerDev.class);
+
     LogReport report = new LogReport();
     @BeforeClass
     static RequestSpecification getrequestSpec() {
@@ -49,6 +55,7 @@ public class SwaggerDev {
                   .then()
                   .log().all()
                    .assertThat().spec(getresponseSpec());
+                   logger.info("Happy path test case is executed");
 
 
       }
@@ -60,12 +67,15 @@ public class SwaggerDev {
                 .queryParam("page", "2")
                 .contentType(ContentType.JSON)
                 .when()
+
                 .get();
         JsonPath jsonPathEvaluator = response.jsonPath();
         JSONObject json = new JSONObject(response.getBody().asString());
         String value = jsonPathEvaluator.get("name").toString();
-        Assert.assertEquals(value,"Lke Skywalker");
-        report.responseJsonObjectValidation(value,"Lke Skywalker");
+        Assert.assertEquals(value,"Luke Skywalker");
+        report.responseJsonObjectValidation(value,"Luke Skywalker");
+        logger.info("Edge path test case is executed");
+
 
     }
 }
