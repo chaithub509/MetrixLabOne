@@ -2,13 +2,12 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
 <suite name="Metrixlab"> <!-- parallel="tests" thread-count="5" -->
-
-    <test verbose="1" name="Carrier Integration API Test" preserve-order="true"> <!-- preserve-order="false" -->
-        <parameter name="browserName" value="chrome" />
-        <parameter name="browserVersion" value="" />
-        <parameter name="platform" value="windows" />
-        <classes>
-            <class name="com.ml.api.metrixapi.swaggerdev">
+    <listeners>
+        <listener class-name="com.ml.api.metrixapi.Listeners"/>
+    </listeners>
+    <test thread-count="2" name="metrixapi.swaggerdev" preserve-order="true"> <!-- preserve-order="false" -->
+           <classes>
+            <class name="com.ml.api.metrixapi.SwaggerDev">
                 <methods>
                      <include name="happyCase"/>
                     <include name="edgeCase"/>
